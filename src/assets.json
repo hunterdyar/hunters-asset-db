@@ -1,0 +1,25 @@
+[
+  {
+    "name": "Test Asset",
+    "download": "http://example.com",
+    "type": "Material",
+    "tags": ["Unity","Blender"],
+    "description": "This item does not actually exist.",
+    "preview": "http://image.png"
+  },
+  {
+    "name": "Test Asset 2",
+    "download": "http://example.com",
+    "tags": ["Unity"],
+    "type": "Model",
+    "description": "This item exists, but only when your eyes are closed.",
+    "preview": "http://image.png"
+  },{
+  "name": "Hi, Evan",
+  "download": "http://example.com",
+  "type": "Model",
+  "tags": ["Blender","3D"],
+  "description": "This item exists, but only when you just really really think hard.",
+  "preview": "http://image.png"
+}
+]

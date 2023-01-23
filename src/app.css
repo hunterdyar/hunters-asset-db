@@ -1,0 +1,7 @@
+.selectedTag, .selectedType{
+    text-decoration: underline;
+    font-style: italic;
+}
+.unselectedTag, .unselectedType{
+
+}
