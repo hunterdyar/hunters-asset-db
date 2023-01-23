@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 
 import './app.css';
-import AssetList from "./Components/AssetList";
+import AssetList from "./components/AssetList";
 import {AssetListHook} from "./hooks/assetHooks";
 
 let assets = require('./assets.json');
