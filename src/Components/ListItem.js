@@ -1,6 +1,4 @@
 import {Button, Card, CardActions, CardContent, Divider, Typography} from "@mui/material";
-import assets from "../assets.json";
-import {useState} from "react";
 
 export default function ListItem({item})
 {

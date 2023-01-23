@@ -1,18 +1,13 @@
-import ListItem from "./Components/ListItem";
 import {
     Box,
     Chip,
     Container,
-    Divider, FormGroup, FormLabel,
+    Divider,
     InputAdornment,
-    List,
-    ListSubheader,
-    Paper,
     Stack,
     TextField,
     Typography
 } from "@mui/material";
-import {useState} from "react";
 
 import './app.css';
 import AssetList from "./Components/AssetList";
@@ -28,10 +23,11 @@ function initGetTags()
     {
         x.tags.map(function(t){
             tags.add(t);
+            return null;
         })
+        return null;
     });
-    let tagsArray = [];
-    return Array.from(tags);;
+    return Array.from(tags);
 }
 
 function App() {
@@ -49,14 +45,14 @@ function App() {
                     {assetTypes.map(function(t){
                     let selected = selectedTypes.includes(t.toLowerCase());
                     let variant = selected ? "filled" : "outlined";
-                    return <Chip label={t} variant={variant} onClick={(e)=>toggleType(t.toLowerCase())}>{t} </Chip>
+                    return <Chip label={t} variant={variant} onClick={()=>toggleType(t.toLowerCase())}>{t}</Chip>
                 })}</Stack>
                 <Stack direction="row" spacing={1}>
                     <Typography component="legend" >Type:</Typography>
                     {assetTags.map(function(t){
                     let selected = selectedTags.includes(t.toLowerCase());
                     let variant = selected ? "filled" : "outlined";
-                    return <Chip label={t} variant={variant} onClick={(e)=>toggleTag(t.toLowerCase())}>{t} </Chip>
+                    return <Chip label={t} variant={variant} onClick={()=>toggleTag(t.toLowerCase())}>{t} </Chip>
                 })}
                 </Stack>
             </Stack>

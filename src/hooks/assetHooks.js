@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import Fuse from "fuse.js";
 
 export function AssetListHook(assets) {
@@ -11,6 +11,7 @@ export function AssetListHook(assets) {
     {
         setQuery("");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     function toggleType(itemType){
         let sTypes = selectedTypes;
         itemType = itemType.toLowerCase();
@@ -25,6 +26,7 @@ export function AssetListHook(assets) {
         }
         setSelectedTypes(sTypes);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     function toggleTag(itemTag){
         console.log("toggle: "+itemTag);
         itemTag = itemTag.toLowerCase();
@@ -41,10 +43,11 @@ export function AssetListHook(assets) {
     }
 
     //Returns the list with hard (non-fuzzy) filtered by the material/tag selections.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     function getRadioFiltered()
     {
         return assets.filter(function (item){
-            var hasType = true;
+            var hasType;
             var hasTag = true;
             //filter function.
             if(selectedTypes.length === 0)
@@ -88,7 +91,7 @@ export function AssetListHook(assets) {
             setResult(fuse.search(query).map((x)=>x.item));
             setFiltered(true)
         }
-    }, [query,assets,toggleType,toggleTag]);
+    }, [query,assets,toggleType,toggleTag,getRadioFiltered]);
 
     return [result, selectedTypes, selectedTags, toggleType, toggleTag,query,setQuery,clearQuery,filtered];
 }
