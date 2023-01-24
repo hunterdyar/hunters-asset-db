@@ -5,3 +5,7 @@
 .unselectedTag, .unselectedType{
 
 }
+Link{
+    textDecoration: "none";
+    boxShadow: "none";
+}

@@ -46,29 +46,32 @@ export default function Single(){
         const item = assets.find((x)=> x.id === params.id);
         return(
             <>
-            <CardContent>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    <span>
-                    {item.type}
-                    </span>
-                </Typography>
-                <Typography variant="h5" component="div">
-                    {item.name}
-                </Typography>
-                <Typography variant="body2">
-                    {item.description}
-                </Typography>
-                <PreviewImage item={item} />
-                <DownloadLinks item={item} />
-            <Divider />
                 <Typography>
-                    <Copyright sx={{pt:1}}  license={item.license}/>
+                    <Link size="small" to={"/"}>Back</Link>
                 </Typography>
-            </CardContent>
-    <CardActions>
-        <Link size="small" to={"/"}>Back</Link>
-    </CardActions>
+                <Divider />
+                <CardContent>
+                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                        <span>
+                        {item.type}
+                        </span>
+                    </Typography>
+                    <Typography variant="h5" component="div">
+                        {item.name}
+                    </Typography>
+                    <Typography variant="body2">
+                        {item.description}
+                    </Typography>
+                    <PreviewImage item={item} />
+                    <DownloadLinks item={item} />
+                <Divider />
+                    <Typography>
+                        <Copyright sx={{pt:1}}  license={item.license}/>
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    <Link size="small" to={"/"}>Back</Link>
+                </CardActions>
             </>
-        );
-
+            );
 }

@@ -39,7 +39,8 @@ export default function ListItem({item})
                         <Copyright license={item.license} small/>
                     </Typography>
                         <Typography>
-                            <Button href={"/assets/"+item.id}>More Info</Button>
+                            <Button variant={"outlined"}>
+                                <Link to={"/assets/"+item.id} > More Info</Link></Button>
                         </Typography>
                 </Grid>
                 <Grid xs={4}>
