@@ -40,13 +40,15 @@ export default function Single(){
                 <Divider />
                 <CardContent>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                        <span>
                         {item.type}
-                        </span>
                     </Typography>
                     <Typography variant="h5" component="div">
                         {item.name}
                     </Typography>
+                    <Typography variant="body1">
+                        by {item.author}
+                    </Typography>
+                    <Divider />
                     <Typography variant="body2">
                         {item.description}
                     </Typography>
