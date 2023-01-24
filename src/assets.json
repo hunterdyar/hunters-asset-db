@@ -1,21 +1,31 @@
 [
   {
-    "name": "Test Asset",
-    "download": "http://example.com",
+    "name": "Old Metal",
+    "id": "old-metal",
+    "downloadType": "local",
+    "downloads": ["materials/old-metal/old-metal.blend","materials/old-metal/old-metal-maps.zip"],
     "type": "Material",
-    "tags": ["Unity","Blender"],
-    "description": "This item does not actually exist.",
-    "preview": "http://image.png"
+    "tags": ["Unity","Blender","Procedural"],
+    "author": "AL",
+    "license": "cc-by",
+    "description": "Procedural metal material made in Blender.",
+    "preview": "materials/old-metal/old-metal-preview.png"
   },
   {
-    "name": "Test Asset 2",
-    "download": "http://example.com",
-    "tags": ["Unity"],
+    "name": "Procedural Ice",
+    "id": "procedural-ice",
+    "license": "by",
+    "download": "models/procedural-ice/ice.blend",
+    "tags": ["Blender","Procedural"],
     "type": "Model",
-    "description": "This item exists, but only when your eyes are closed.",
-    "preview": "http://image.png"
+    "description": "Ice. Procedural mesh with blender geometry nodes and shader.",
+    "author": "AL",
+    "preview": "models/procedural-ice/procedural-ice-preview.png",
+    "smallPreview": "models/procedural-ice/procedural-ice-preview.png"
   },{
   "name": "Hi, Evan",
+  "id": "hi-evan",
+  "license": "by-sa",
   "download": "http://example.com",
   "type": "Model",
   "tags": ["Blender","3D"],
