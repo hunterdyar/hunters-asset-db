@@ -7,7 +7,7 @@ function PreviewImage(props) {
     {
         if(props.item.smallPreview && props.item.presmallPreviewview !== "")
         {
-            return  <Link size="small" to={"/assets/"+props.item.id}><img alt={props.item.name} src={process.env.PUBLIC_URL+"/assets/"+props.item.smallPreview} width="100%"/>
+            return  <Link size="small" to={"/assets/"+props.item.id}><img alt={props.item.name} src={props.item.smallPreview} width="100%"/>
                 </Link>
             }else{
             return <></>

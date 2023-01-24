@@ -2,26 +2,25 @@
   {
     "name": "Old Metal",
     "id": "old-metal",
-    "downloadType": "local",
-    "downloads": ["materials/old-metal/old-metal.blend","materials/old-metal/old-metal-maps.zip"],
+    "downloads": ["https://hunterassetcollectiondb.blob.core.windows.net/materials/old-metal/old-metal.blend","https://hunterassetcollectiondb.blob.core.windows.net/materials/old-metal/old-metal-maps.zip"],
     "type": "Material",
     "tags": ["Unity","Blender","Procedural"],
     "author": "AL",
     "license": "cc-by",
     "description": "Procedural metal material made in Blender.",
-    "preview": "materials/old-metal/old-metal-preview.png",
-    "smallPreview": "materials/old-metal/old-metal-preview-small.png"
+    "preview": "https://hunterassetcollectiondb.blob.core.windows.net/materials/old-metal/old-metal-preview.png",
+    "smallPreview": "https://hunterassetcollectiondb.blob.core.windows.net/materials/old-metal/old-metal-preview-small.png"
   },
   {
     "name": "Procedural Ice",
     "id": "procedural-ice",
     "license": "by",
-    "download": "models/procedural-ice/ice.blend",
+    "download": "https://hunterassetcollectiondb.blob.core.windows.net/models/procedural-ice/Ice.blend",
     "tags": ["Blender","Procedural"],
     "type": "Model",
     "description": "Ice. Procedural mesh with blender geometry nodes and shader.",
     "author": "AL",
-    "preview": "models/procedural-ice/procedural-ice-preview.png",
-    "smallPreview": "models/procedural-ice/procedural-ice-preview-small.png"
+    "preview": "https://hunterassetcollectiondb.blob.core.windows.net/models/procedural-ice/procedural-ice-preview.png",
+    "smallPreview": "https://hunterassetcollectiondb.blob.core.windows.net/models/procedural-ice/procedural-ice-preview-small.png"
   }
 ]

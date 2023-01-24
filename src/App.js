@@ -4,6 +4,7 @@ import {HashRouter, Route, Routes} from "react-router-dom";
 import NoPage from "./pages/NoPage";
 import Layout from "./pages/Layout";
 import Single from "./pages/Single";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
                     <Route path="assets/:id" element={<Single />} />
+                    <Route path="about" element={<About />} />
                     <Route path="404" element={<NoPage />} />
                 </Route>
             </Routes>

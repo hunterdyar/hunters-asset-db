@@ -4,23 +4,11 @@ import Copyright from "../components/Copyright";
 import assets from "../assets.json";
 
 function DownloadLinks(props) {
-    //default to local assets.
-    let urlPrefix = process.env.PUBLIC_URL + "/assets/";
-    if(props.item.downloadType)
-    {
-        if(props.item.downloadType === "local"){
-
-            urlPrefix = process.env.PUBLIC_URL + "/assets/";
-        }else if(props.item.downloadType === "absolute")
-        {
-            urlPrefix = "";
-        }
-    }
     if(props.item.downloads) {
         if (props.item.downloads.length > 0) {
             return <ul>
                 {props.item.downloads.map((dl) => {
-                    return <li key={dl}><a href={urlPrefix + dl}>{dl}</a></li>;
+                    return <li key={dl}><a href={dl}>{dl.split('/').pop()}</a></li>;
                 })}
             </ul>
         }
@@ -28,7 +16,7 @@ function DownloadLinks(props) {
     //else
     if(props.item.download) {
         return <ul>
-            <li><a href={urlPrefix + props.item.download}>{props.item.download}</a></li>
+            <li><a href={props.item.download}>{props.item.download.split('/').pop()}</a></li>
         </ul>
     }
 }
@@ -36,7 +24,7 @@ function DownloadLinks(props) {
 function PreviewImage(props) {
     if(props.item.preview && props.item.preview !== "")
     {
-        return <img src={process.env.PUBLIC_URL+"/assets/"+props.item.preview} alt={props.item.name} width="100%"/>
+        return <img src={props.item.preview} alt={props.item.name} width="100%"/>
     }else{
         return <></>
     }
