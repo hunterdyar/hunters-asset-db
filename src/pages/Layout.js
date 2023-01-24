@@ -8,7 +8,7 @@ const Layout = () => {
                 Hunter's Asset Collection
             </Typography>
             <Typography>
-                <p><Link to={"/"}>Home</Link> <Link to={"/about"}>About</Link></p>
+                <Link to={"/"}>Home</Link> <Link to={"/about"}>About</Link>
             </Typography>
             <Outlet />
         </Container>

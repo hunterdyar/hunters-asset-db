@@ -23,12 +23,12 @@ export default function ListItem({item})
         <Card>
             <CardContent>
             <Grid container spacing={1}>
-                <Grid xs={12}>
+                <Grid item xs={12}>
                     <Typography variant="h5" component="div">
                         {item.name}
                     </Typography>
                 </Grid>
-                <Grid xs={8}>
+                <Grid item xs={8}>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                         {item.type}
                     </Typography>
@@ -43,7 +43,7 @@ export default function ListItem({item})
                                 <Link to={"/assets/"+item.id} > More Info</Link></Button>
                         </Typography>
                 </Grid>
-                <Grid xs={4}>
+                <Grid item xs={4}>
                     <PreviewImage item = {item}/>
                 </Grid>
 
