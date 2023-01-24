@@ -9,7 +9,8 @@
     "author": "AL",
     "license": "cc-by",
     "description": "Procedural metal material made in Blender.",
-    "preview": "materials/old-metal/old-metal-preview.png"
+    "preview": "materials/old-metal/old-metal-preview.png",
+    "smallPreview": "materials/old-metal/old-metal-preview-small.png"
   },
   {
     "name": "Procedural Ice",
@@ -21,15 +22,6 @@
     "description": "Ice. Procedural mesh with blender geometry nodes and shader.",
     "author": "AL",
     "preview": "models/procedural-ice/procedural-ice-preview.png",
-    "smallPreview": "models/procedural-ice/procedural-ice-preview.png"
-  },{
-  "name": "Hi, Evan",
-  "id": "hi-evan",
-  "license": "by-sa",
-  "download": "http://example.com",
-  "type": "Model",
-  "tags": ["Blender","3D"],
-  "description": "This item exists, but only when you just really really think hard.",
-  "preview": "http://image.png"
-}
+    "smallPreview": "models/procedural-ice/procedural-ice-preview-small.png"
+  }
 ]
