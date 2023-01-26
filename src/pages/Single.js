@@ -1,7 +1,7 @@
 import {Link, useParams} from "react-router-dom";
 import {CardActions, CardContent, Divider, Typography} from "@mui/material";
 import Copyright from "../components/Copyright";
-import assets from "../assets.json";
+import {GetAssetHook} from "../database";
 
 function DownloadLinks(props) {
     if(props.item.downloads) {
@@ -30,8 +30,9 @@ function PreviewImage(props) {
     }
 }
 export default function Single(){
+
         const params = useParams();
-        const item = assets.find((x)=> x.id === params.id);
+        const [id, setID,item] = GetAssetHook(params.id);
         return(
             <>
                 <Typography>

@@ -1,10 +1,11 @@
 import {Box, Chip, Divider, InputAdornment, Stack, TextField, Typography} from "@mui/material";
 import AssetList from "../components/AssetList";
 import {AssetListHook} from "../hooks/assetHooks";
-import assets from "../assets.json";
-const assetTypes = [...new Set(assets.map((Val) => Val.type))];
-const assetTags = initGetTags();
-function initGetTags()
+
+// const assetTypes = [...new Set(assets.map((Val) => Val.type))];
+const assetTypes = ["material","model"];
+const assetTags = ["a","b","c"];
+function initGetTags(assets)
 {
     let tags = new Set();
     assets.map(function (x)
@@ -19,7 +20,7 @@ function initGetTags()
 }
 export default function Home()
 {
-    const [filteredAssets,selectedTypes,selectedTags,toggleType,toggleTag,query,setQuery,clearQuery,filtered] = AssetListHook(assets);
+    const [filteredAssets,selectedTypes,selectedTags,toggleType,toggleTag,query,setQuery,clearQuery,filtered] = AssetListHook();
 
     return <div><Box components="form" padding={1}>
         <Stack spacing={1}>

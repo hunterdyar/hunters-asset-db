@@ -17,8 +17,9 @@ function PreviewImage(props) {
     return null;
 }
 
-export default function ListItem({item})
+export default function ListItem(props)
 {
+    let item = props.item;
     return (
         <Card>
             <CardContent>
