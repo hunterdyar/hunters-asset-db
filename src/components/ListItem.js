@@ -40,7 +40,7 @@ export default function ListItem({item})
                     </Typography>
                         <Typography>
                             <Button variant={"outlined"}>
-                                <Link to={"/assets/"+item.id} > More Info</Link></Button>
+                                <Link to={"/assets/"+item.id} >More Info</Link></Button>
                         </Typography>
                 </Grid>
                 <Grid item xs={4}>
