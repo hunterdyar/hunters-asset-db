@@ -1,7 +1,8 @@
-import {Link, useParams} from "react-router-dom";
+import {Link, useHref, useLocation, useParams, useResolvedPath} from "react-router-dom";
 import {CardActions, CardContent, Divider, Typography} from "@mui/material";
 import Copyright from "../components/Copyright";
 import {GetAssetHook} from "../database";
+import {useState} from "react";
 
 function DownloadLinks(props) {
     if(props.item.downloads) {
@@ -21,6 +22,14 @@ function DownloadLinks(props) {
     }
 }
 
+function AttributionText(item)
+{
+    let url = "http://assets.hdyar.com/"+useHref(useLocation());
+    //"A-Frame cabin" (https://skfb.ly/oDoSX) by Janis Zeps is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+    //todo: license to license name and link as separate objects. ie: refactor license component to pull that data into a function we can export and use here.
+    return '"'+item.name+"' by "+item.author+". From Hunter's Asset Collection ("+url+"). Licensed under Creative Commons "+item.license;
+}
+
 function PreviewImage(props) {
     if(props.item.preview && props.item.preview !== "")
     {
@@ -29,10 +38,22 @@ function PreviewImage(props) {
         return <></>
     }
 }
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+}
 export default function Single(){
-
         const params = useParams();
         const [id, setID,item] = GetAssetHook(params.id);
+        const defaultCopyText = "Copy Attribution";
+        const [copytext, setCopytext] = useState(defaultCopyText)
+        let attribution = AttributionText(item);
+        function copyAttribution()
+        {
+            setCopytext("Copied!");
+            delay(750).then(() => setCopytext(defaultCopyText))
+            // Copy the text inside the text field
+            navigator.clipboard.writeText(attribution);
+        }
         return(
             <>
                 <Typography>
@@ -58,6 +79,8 @@ export default function Single(){
                 <Divider />
                     <Typography>
                         <Copyright sx={{pt:1}}  license={item.license}/>
+                        <p><Link size="small" onClick={copyAttribution}>{copytext}</Link></p>
+
                     </Typography>
                 </CardContent>
                 <CardActions>

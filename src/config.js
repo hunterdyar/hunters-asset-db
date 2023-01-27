@@ -1,7 +1,7 @@
 var config = {}
 
-config.endpoint = 'whoop'
-config.key = 'floop'
+config.endpoint = 'https://hd-asset-db-cosmos.documents.azure.com:443/'
+config.key = 'kiJhTWWm6QsPuHlrPsqMbIdFL2ZiHoV7vMp5GnSUY7EbjMoRynJE8DmM1fVXxJVrLtQQmryRs7fUACDbeBEoZg=='
 
 config.database = {
   id: 'ToDoList'
