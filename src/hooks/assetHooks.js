@@ -3,7 +3,7 @@ import Fuse from "fuse.js";
 import {GetAllAssetsHook} from "../database";
 
 export function AssetListHook() {
-    const [assets, setAssets] = GetAllAssetsHook();
+    const [assets] = GetAllAssetsHook();
     const [selectedTypes,setSelectedTypes] = useState([]);
     const [selectedTags,setSelectedTags] = useState([]);
     const [query,setQuery] = useState("");

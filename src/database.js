@@ -45,7 +45,7 @@ async function queryContainer(id) {
     if(results.length === 1){
         return results[0];
     }else{
-        console.Log("Error");
+        console.log("Error");
     }
 }
 
@@ -67,7 +67,7 @@ async function getAllAssets(){
 //Hooks
 export function GetAssetHook(rid)
 {
-    const [id, setID] = React.useState(rid);
+    const [id] = React.useState(rid);
     const [asset, setAsset] = React.useState({});
     React.useEffect(() => {
         queryContainer(id).then(response => {
@@ -75,7 +75,7 @@ export function GetAssetHook(rid)
         })
     },[id]);
 
-    return [id,setID,asset];
+    return [id,asset];
 }
 
 export function GetAllAssetsHook()

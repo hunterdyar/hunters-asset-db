@@ -5,19 +5,19 @@ import {AssetListHook} from "../hooks/assetHooks";
 // const assetTypes = [...new Set(assets.map((Val) => Val.type))];
 const assetTypes = ["material","model"];
 const assetTags = ["a","b","c"];
-function initGetTags(assets)
-{
-    let tags = new Set();
-    assets.map(function (x)
-    {
-        x.tags.map(function(t){
-            tags.add(t);
-            return null;
-        })
-        return null;
-    });
-    return Array.from(tags);
-}
+// function initGetTags(assets)
+// {
+//     let tags = new Set();
+//     assets.map(function (x)
+//     {
+//         x.tags.map(function(t){
+//             tags.add(t);
+//             return null;
+//         })
+//         return null;
+//     });
+//     return Array.from(tags);
+// }
 export default function Home()
 {
     const [filteredAssets,selectedTypes,selectedTags,toggleType,toggleTag,query,setQuery,clearQuery,filtered] = AssetListHook();

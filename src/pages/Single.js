@@ -1,4 +1,4 @@
-import {Link, useHref, useLocation, useParams, useResolvedPath} from "react-router-dom";
+import {Link, useHref, useLocation, useParams} from "react-router-dom";
 import {CardActions, CardContent, Divider, Typography} from "@mui/material";
 import Copyright from "../components/Copyright";
 import {GetAssetHook} from "../database";
@@ -43,13 +43,13 @@ function delay(time) {
 }
 export default function Single(){
         const params = useParams();
-        const [id, setID,item] = GetAssetHook(params.id);
+        const [id,item] = GetAssetHook(params.id);
         const defaultCopyText = "Copy Attribution";
         const [copytext, setCopytext] = useState(defaultCopyText)
         let attribution = AttributionText(item);
         function copyAttribution()
         {
-            setCopytext("Copied!");
+            setCopytext("Copied!"+id);
             delay(750).then(() => setCopytext(defaultCopyText))
             // Copy the text inside the text field
             navigator.clipboard.writeText(attribution);
@@ -79,7 +79,7 @@ export default function Single(){
                 <Divider />
                     <Typography>
                         <Copyright sx={{pt:1}}  license={item.license}/>
-                        <p><Link size="small" onClick={copyAttribution}>{copytext}</Link></p>
+                        <p><Link size="small" to="#" onClick={copyAttribution}>{copytext}</Link></p>
 
                     </Typography>
                 </CardContent>
