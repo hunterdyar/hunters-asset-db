@@ -4,7 +4,7 @@ import {AssetListHook} from "../hooks/assetHooks";
 
 // const assetTypes = [...new Set(assets.map((Val) => Val.type))];
 const assetTypes = ["material","model"];
-const assetTags = ["a","b","c"];
+const assetTags = ["blender","unity","3D"];
 // function initGetTags(assets)
 // {
 //     let tags = new Set();

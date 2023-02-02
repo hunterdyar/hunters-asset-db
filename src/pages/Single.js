@@ -55,6 +55,7 @@ export default function Single(){
             // Copy the text inside the text field
             navigator.clipboard.writeText(attribution);
         }
+
         return(
             <>
                 <Typography>
@@ -87,5 +88,5 @@ export default function Single(){
                     <Link size="small" to={"/"}>Back</Link>
                 </CardActions>
             </>
-            );
+        );
 }
