@@ -1,22 +1,23 @@
 import {GetAllAssetsHook} from "../database";
 import {useEffect, useState} from "react";
+import Fuse from "fuse.js";
+import {InputAdornment, TextField} from "@mui/material";
 
 export default function Test()
 {
     const [assets] = GetAllAssetsHook();
-    const [tagList,setTagList] = useState([]);
-    const [typeList,setTypeList] = useState([]);
+    const [meta,setMeta] = useState({tags:[],types:[]});
     const [selectedTags, setSelectedTags] = useState([]);
     const [selectedTypes, setSelectedTypes] = useState([]);
-
+    const [isFiltered,setIsFiltered] = useState(false);
+    const [filter, setFilter] = useState("");
     //change to useMemo?
-    const [filtered, setFiltered] = useState(assets);
+    const [filteredAssets, setFilteredAssets] = useState(assets);
 
     //Update the initial tag list. this only happens on asset data from database.
     useEffect(()=>{
         //Update Type list
         let types = [...new Set(assets.map((Val) => Val.type))];
-        setTypeList(types);
         //update TagList
         let tags = new Set();
             assets.map(function (x)
@@ -30,12 +31,13 @@ export default function Test()
         //this makes the other useEffect get called twice.
         //We could wrap these into a single "filter settings" object, which only changes when any of the things change.
         //including init.
-        setTagList(Array.from(tags));
+        let m = {tags:Array.from(tags),types:types};
+        setMeta(m);
     },[assets]);
 
     //Update the viewed (filtered) assets. This happens on asset data or filter change.
     useEffect(()=>{
-            setFiltered(assets.filter(function (item){
+            let f = assets.filter(function (item){
                 let hasType;
                 let hasTag = true;
                 //filter function.
@@ -62,8 +64,23 @@ export default function Test()
                     }
                 }
                 return hasType && hasTag;
-            }))
-        },[assets,selectedTypes,selectedTags]);
+            });
+        //now f is filtered by our buttons. Next, apply fuzzy search.
+        const fuse = new Fuse(f, {
+            distance: 30,
+            threshold: 0.49,
+            keys: ["name", "description"]
+        });
+
+        if (filter === "") {
+            //no fuzzy search!
+            setFilteredAssets(f);
+            setIsFiltered(f.length === assets.length)
+        } else {
+            setFilteredAssets(fuse.search(filter).map((x)=>x.item));
+            setIsFiltered(true);//for sure true
+        }
+        },[assets,selectedTypes,selectedTags,filter]);
 
     function toggleTag(itemTag){
         itemTag = itemTag.toLowerCase();
@@ -97,16 +114,26 @@ export default function Test()
     }
 
     return <>assets<ul>
-        {filtered.map((item)=>
+        {filteredAssets.map((item)=>
         {return (<li key={item.id}>{item.name}</li>)})}
     </ul>
         tags<ul>
-            {tagList.map(function (x)
+            {meta.tags.map(function (x)
             {return (<li key={x}><button onClick={()=>toggleTag(x)}>{x}</button></li>)})}
         </ul>
         types<ul>
-            {typeList.map(function (x)
+            {meta.types.map(function (x)
             {return (<li key={x}><button onClick={()=>toggleType(x)}>{x}</button></li>)})}
         </ul>
+        <TextField id="standard-basic" label="  Search" variant="standard" type="search" fullWidth
+                   value={filter}
+                   onChange={e => setFilter(e.target.value)}
+                   InputProps={{
+                       endAdornment: isFiltered ? <InputAdornment position="start" onClick={()=>setFilter("")} sx={{paddingRight:"12px"}}><h2>x</h2></InputAdornment> : null,
+                   }}
+                   sx={{
+
+                   }}
+        />
     </>
 }
