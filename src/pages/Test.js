@@ -102,11 +102,11 @@ export default function Test()
     </ul>
         tags<ul>
             {tagList.map(function (x)
-            {return (<li key={x}><a onClick={()=>toggleTag(x)}>{x}</a></li>)})}
+            {return (<li key={x}><a href="#" onClick={()=>toggleTag(x)}>{x}</a></li>)})}
         </ul>
         types<ul>
             {typeList.map(function (x)
-            {return (<li key={x}><a onClick={()=>toggleType(x)}>{x}</a></li>)})}
+            {return (<li key={x}><a href="#" onClick={()=>toggleType(x)}>{x}</a></li>)})}
         </ul>
     </>
 }
