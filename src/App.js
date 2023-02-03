@@ -5,7 +5,7 @@ import NoPage from "./pages/NoPage";
 import Layout from "./pages/Layout";
 import Single from "./pages/Single";
 import About from "./pages/About";
-import Test from "./pages/Test";
+import Test from "./pages/Home";
 
 function App() {
   return (
