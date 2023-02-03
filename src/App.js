@@ -5,6 +5,7 @@ import NoPage from "./pages/NoPage";
 import Layout from "./pages/Layout";
 import Single from "./pages/Single";
 import About from "./pages/About";
+import Test from "./pages/Home";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
                     <Route path="assets/:id" element={<Single />} />
                     <Route path="about" element={<About />} />
                     <Route path="404" element={<NoPage />} />
+                    <Route path="test" element={<Test />} />
                 </Route>
             </Routes>
         </HashRouter >

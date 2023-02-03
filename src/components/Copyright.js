@@ -2,7 +2,7 @@ export default function Copyright(props)
 {
     if(props.license)
     {
-        var license = props.license.toLowerCase();
+        let license = props.license.toLowerCase();
         if(license === "cc-by" || license === "by")
         {
             if(props.small) {
