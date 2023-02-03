@@ -81,7 +81,7 @@ export default function Single(){
                 <Divider />
                     <Typography>
                         <Copyright sx={{pt:1}}  license={item.license}/>
-                        <p><Link size="small" to="#" onClick={copyAttribution}>{copytext}</Link></p>
+                        <Link size="small" to="#" onClick={copyAttribution}>{copytext}</Link>
                     </Typography>
                 </CardContent>
                 <CardActions>
