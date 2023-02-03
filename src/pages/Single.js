@@ -1,8 +1,8 @@
-import {Link, useHref, useLocation, useParams} from "react-router-dom";
-import {CardActions, CardContent, Divider, Typography} from "@mui/material";
-import Copyright from "../components/Copyright";
+import {useParams} from "react-router-dom";
+import Copyright, {AttributionText} from "../components/Copyright";
 import {GetAssetHook} from "../database";
 import {useState} from "react";
+import {Box, Button, Divider, Link, Sheet, Typography} from "@mui/joy";
 
 function DownloadLinks(props) {
     if(props.item.downloads) {
@@ -22,12 +22,7 @@ function DownloadLinks(props) {
     }
 }
 
-function AttributionText(item)
-{
-    let url = "http://assets.hdyar.com/"+useHref(useLocation());
-    //todo: license to license name and link as separate objects. ie: refactor license component to pull that data into a function we can export and use here.
-    return '"'+item.name+"' by "+item.author+". From Hunter's Asset Collection ("+url+"). Licensed under Creative Commons "+item.license;
-}
+
 
 function PreviewImage(props) {
     if(props.item.preview && props.item.preview !== "")
@@ -50,7 +45,7 @@ export default function Single(){
         //Copy Attribution
         function copyAttribution()
         {
-            setCopytext("Copied!"+id);
+            setCopytext("Copied!");
             delay(750).then(() => setCopytext(defaultCopyText))
             // Copy the text inside the text field
             navigator.clipboard.writeText(attribution);
@@ -58,35 +53,37 @@ export default function Single(){
 
         return(
             <>
-                <Typography>
-                    <Link size="small" to={"/"}>Back</Link>
-                </Typography>
-                <Divider />
-                <CardContent>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                        {item.type}
-                    </Typography>
-                    <Typography variant="h5" component="div">
+                <Sheet key={id} sx={{
+                    py: 3
+                }}>
+                    <Typography level="h3" component="div" textAlign={"center"}>
                         {item.name}
                     </Typography>
-                    <Typography variant="body1">
+                    <Typography level="body2" color="text.secondary" gutterBottom>
+                        {item.type}
+                    </Typography>
+
+                    <Typography level="body1">
                         by {item.author}
                     </Typography>
                     <Divider />
-                    <Typography variant="body2">
+                    <Typography level="body1">
                         {item.description}
                     </Typography>
                     <PreviewImage item={item} />
+                    <Divider />
+                    <Typography level={"h5"}>Downloads</Typography>
                     <DownloadLinks item={item} />
                 <Divider />
+                    <Box sx={{
+                        py:2
+                    }}>
                     <Typography>
-                        <Copyright sx={{pt:1}}  license={item.license}/>
-                        <Link size="small" to="#" onClick={copyAttribution}>{copytext}</Link>
+                        <Copyright sx={{pt:1}}  license={item.license}/><br />
                     </Typography>
-                </CardContent>
-                <CardActions>
-                    <Link size="small" to={"/"}>Back</Link>
-                </CardActions>
+                        <Link component={Button} size="small" to="#" onClick={copyAttribution}>{copytext}</Link>
+                    </Box>
+                    </Sheet>
             </>
         );
 }

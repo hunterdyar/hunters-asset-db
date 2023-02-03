@@ -1,6 +1,6 @@
-import {Button, Card, CardContent, Divider, Grid, Typography} from "@mui/material";
 import Copyright from "./Copyright";
 import {Link} from "react-router-dom";
+import {Box, Button, Card, Typography} from "@mui/joy";
 
 function PreviewImage(props) {
     if(props.item.smallPreview)
@@ -21,19 +21,15 @@ export default function ListItem(props)
 {
     let item = props.item;
     return (
-        <Card>
-            <CardContent>
-            <Grid container spacing={1}>
-                <Grid item xs={12}>
+        <Card orientation="horizontal">
+            <Box>
                     <Typography variant="h5" component="div">
                         {item.name}
                     </Typography>
-                </Grid>
-                <Grid item xs={8}>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                    <Typography level={"body2"} >
                         {item.type}
                     </Typography>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                    <Typography level={"body2"} >
                         {item.tags.map((t)=>{return t+" ";})}
                     </Typography>
                     <Typography>
@@ -43,14 +39,9 @@ export default function ListItem(props)
                             <Button variant={"outlined"}>
                                 <Link to={"/assets/"+item.id} >More Info</Link></Button>
                         </Typography>
-                </Grid>
-                <Grid item xs={4}>
+            </Box>
                     <PreviewImage item = {item}/>
-                </Grid>
 
-            <Divider />
-            </Grid>
-            </CardContent>
         </Card>
     );
 }

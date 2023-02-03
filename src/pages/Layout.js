@@ -1,17 +1,35 @@
-import {Link, Outlet} from "react-router-dom";
-import {Container, Typography} from "@mui/material";
-
+import {Link as RouterLink, Outlet} from "react-router-dom";
+import {CssBaseline, Link, CssVarsProvider, Sheet, Typography, Box} from "@mui/joy";
+import {CrateIcon} from "../components/Crate";
 const Layout = () => {
     return (
-        <Container maxWidth="sm" sx={{pt:1}}>
-            <Typography variant="h3" component="div">
-                Hunter's Asset Collection
-            </Typography>
-            <Typography>
-                <Link to={"/"}>Home</Link> <Link to={"/about"}>About</Link>
+    <CssVarsProvider>
+        <CssBaseline />
+        <Sheet variant="outlined" sx={{
+            mx: 'auto',
+            width: 620,
+            my: 4,
+            py: 2,
+            px: 1,
+            boxShadow: 'md',
+            borderRadius: 'sm'
+
+        }}>
+            <Box sx={{
+                display: 'flex',
+                justifyContent: "center",
+                pb: 2
+            }}>
+                <Typography level="h2" component="h1" textAlign={"center"} startDecorator={<CrateIcon />}>
+                    Hunter's Asset Collection
+                </Typography>
+            </Box>
+            <Typography level="body1" textAlign={"center"}>
+                <Link component={RouterLink} variant={"outlined"} to={"/"}>Home</Link> <Link component={RouterLink} variant={"outlined"} to={"/about"}>About</Link>
             </Typography>
             <Outlet />
-        </Container>
+        </Sheet>
+    </CssVarsProvider>
     )
 };
 
