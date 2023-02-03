@@ -1,14 +1,13 @@
 import {useEffect, useState} from "react";
 import Fuse from "fuse.js";
-import {GetAllAssetsHook} from "../database";
 
-export function AssetListHook() {
-    const [assets] = GetAllAssetsHook();
+export function AssetListHook(assets) {
     const [selectedTypes,setSelectedTypes] = useState([]);
     const [selectedTags,setSelectedTags] = useState([]);
     const [query,setQuery] = useState("");
     const [filtered, setFiltered] = useState(false);
     const [result, setResult] = useState(assets);
+
     function clearQuery()
     {
         setQuery("");
@@ -19,7 +18,7 @@ export function AssetListHook() {
         itemType = itemType.toLowerCase();
         if(sTypes.includes(itemType))
         {
-            var index = sTypes.indexOf(itemType);
+            const index = sTypes.indexOf(itemType);
             if (index !== -1) {
                 sTypes.splice(index, 1);
             }
@@ -30,17 +29,17 @@ export function AssetListHook() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     function toggleTag(itemTag){
-        console.log("toggle: "+itemTag);
         itemTag = itemTag.toLowerCase();
         if(selectedTags.includes(itemTag))
         {
-            var index = selectedTags.indexOf(itemTag);
+            const index = selectedTags.indexOf(itemTag);
             if (index !== -1) {
                 selectedTags.splice(index, 1);
             }
         }else{
             selectedTags.push(itemTag.toLowerCase());
         }
+        console.log("Update Selected Tags",selectedTags)
         setSelectedTags(selectedTags);
     }
 
@@ -49,8 +48,8 @@ export function AssetListHook() {
     function getRadioFiltered()
     {
         return assets.filter(function (item){
-            var hasType;
-            var hasTag = true;
+            let hasType;
+            let hasTag = true;
             //filter function.
             if(selectedTypes.length === 0)
             {
@@ -64,7 +63,7 @@ export function AssetListHook() {
             {
                 hasTag = true;
             }else{
-                for(var i = 0;i<item.tags.length;i++)
+                for(let i = 0; i<item.tags.length; i++)
                 {
                     hasTag = selectedTags.includes(item.tags[i].toLowerCase());
                     if(hasTag)//find first true.
@@ -73,7 +72,6 @@ export function AssetListHook() {
                     }
                 }
             }
-
             return hasType && hasTag;
         });
     }
