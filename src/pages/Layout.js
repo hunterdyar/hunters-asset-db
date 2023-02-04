@@ -20,12 +20,12 @@ const Layout = () => {
                 justifyContent: "center",
                 pb: 2
             }}>
-                <Typography level="h2" component="h1" textAlign={"center"} startDecorator={<CrateIcon />}>
+                <Typography level="h2" component="h1" textAlign={"center"} startDecorator={<CrateIcon sx={{pr:1}} />} endDecorator={<CrateIcon sx={{pl:1}}/>}>
                     Hunter's Asset Collection
                 </Typography>
             </Box>
-            <Typography level="body1" textAlign={"center"}>
-                <Link component={RouterLink} variant={"outlined"} to={"/"}>Home</Link> <Link component={RouterLink} variant={"outlined"} to={"/about"}>About</Link>
+            <Typography level="body1" textAlign={"center"} >
+                <Link component={RouterLink} variant={"outlined"} color={"neutral"} to={"/"}>Home</Link> <Link component={RouterLink} color={"neutral"} variant={"outlined"} to={"/about"}>About</Link>
             </Typography>
             <Outlet />
         </Sheet>

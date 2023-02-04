@@ -86,7 +86,7 @@ export default function Home()
         if (filter === "") {
             //no fuzzy search!
             setFilteredAssets(f);
-            setIsFiltered(f.length === assets.length)
+            setIsFiltered(false);
         } else {
             setFilteredAssets(fuse.search(filter).map((x)=>x.item));
             setIsFiltered(true);//for sure true
@@ -139,7 +139,7 @@ export default function Home()
                              variant={selected ? "soft" : "plain"}
                              color={selected ? 'primary' : 'neutral'}
                              startDecorator={
-                                 selected && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
+                                 selected && <CheckIcon sx={{ zIndex: 2, pointerEvents: 'none' }} />
                              }>
                     <Typography textTransform={"capitalize"}>
                     <Checkbox
@@ -167,7 +167,7 @@ export default function Home()
                              variant={selected ? "soft" : "plain"}
                              color={selected ? 'primary' : 'neutral'}
                              startDecorator={
-                                 selected && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
+                                 selected && <CheckIcon sx={{ zIndex: 1 }} />
                              }>
                     <Typography textTransform={"capitalize"}>
                     <Checkbox
@@ -197,7 +197,7 @@ export default function Home()
                //     endAdornment: isFiltered ? <InputAdornment position="start" onClick={()=>setFilter("")} sx={{paddingRight:"12px"}}><h2>x</h2></InputAdornment> : null,
                // }}
            endDecorator={
-               isFiltered ? <h2 onClick={()=>setFilter("")}>x</h2> : null
+               isFiltered ? <button onClick={()=>setFilter("")}>x</button> : null
            }
            sx={{
                 mx: 2,
