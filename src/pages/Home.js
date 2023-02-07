@@ -14,6 +14,7 @@ import {
     Sheet,
     Typography
 } from "@mui/joy";
+import {Close} from "@mui/icons-material";
 
 export default function Home()
 {
@@ -193,11 +194,8 @@ export default function Home()
            value={filter}
            onChange={e => setFilter(e.target.value)}
            placeholder="Filter assets"
-               // InputProps={{
-               //     endAdornment: isFiltered ? <InputAdornment position="start" onClick={()=>setFilter("")} sx={{paddingRight:"12px"}}><h2>x</h2></InputAdornment> : null,
-               // }}
            endDecorator={
-               isFiltered ? <button onClick={()=>setFilter("")}>x</button> : null
+               isFiltered ? <Close onClick={()=>setFilter("")} /> : null
            }
            sx={{
                 mx: 2,
