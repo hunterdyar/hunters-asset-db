@@ -8,7 +8,7 @@ function PreviewImage(props) {
     {
         if(props.item.smallPreview && props.item.smallPreview !== "")
         {
-            return <AspectRatio objectFit="contain" variant="plain" ratio={2}>
+            return <AspectRatio objectFit="contain" variant="plain" ratio={1}>
                 <Link size="small" to={"/assets/"+props.item.id}><img alt={props.item.name} src={props.item.smallPreview} width="100%"/>
                 </Link>
             </AspectRatio>;
@@ -29,37 +29,33 @@ export default function ListItem(props)
 {
     let item = props.item;
     return (
-        <Grid container sx={{py: 1}}>
-            <Grid item xs={12} sx={{ flexGrow:1 }}>
+        <Grid container sx={{py: 1}} spacing={1}>
+            <Grid item xs={12} >
                     <Typography level="h4">
                         {item.name}
                     </Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={8}>
                     <Typography level={"body2"} component="span" textAlign={"left"}>
                         {item.type}
                     </Typography>
-            </Grid>
-            <Grid item xs={6}>
+
                     <Typography level={"body2"} component={"span"} textAlign={"right"}>
                         {item.tags.map((t)=>{return t+" ";})}
                     </Typography>
+                    <Typography >
+                        <Button variant={"outlined"}>
+                            <Link to={"/assets/"+item.id} >More Info</Link></Button>
+                    </Typography>
+                    <Typography textAlign={"right"}>
+                        <Copyright license={item.license} small/>
+                    </Typography>
+            </Grid>
+            <Grid item xs={"auto"}></Grid>
+            <Grid item xs={3}>
+                    <PreviewImage  item = {item}/>
             </Grid>
 
-            <Grid item xs={12}>
-                    <PreviewImage  item = {item} sx={{px:5}}/>
-            </Grid>
-            <Grid xs={6}>
-                <Typography >
-                    <Button variant={"outlined"}>
-                        <Link to={"/assets/"+item.id} >More Info</Link></Button>
-                </Typography>
-            </Grid>
-            <Grid item xs={6}>
-                <Typography textAlign={"right"}>
-                    <Copyright license={item.license} small/>
-                </Typography>
-            </Grid>
         </Grid>
     );
 }
