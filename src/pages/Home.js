@@ -1,8 +1,20 @@
 import {GetAllAssetsHook} from "../database";
 import {useEffect, useState} from "react";
 import Fuse from "fuse.js";
-import {Box, Chip, Divider, InputAdornment, Stack, TextField, Typography} from "@mui/material";
+import CheckIcon from '@mui/icons-material/Check';
 import AssetList from "../components/AssetList";
+import {
+    Box,
+    Checkbox,
+    Chip,
+    Divider,
+    FormControl,
+    FormLabel,
+    Input,
+    Sheet,
+    Typography
+} from "@mui/joy";
+import {Close} from "@mui/icons-material";
 
 export default function Home()
 {
@@ -75,7 +87,7 @@ export default function Home()
         if (filter === "") {
             //no fuzzy search!
             setFilteredAssets(f);
-            setIsFiltered(f.length === assets.length)
+            setIsFiltered(false);
         } else {
             setFilteredAssets(fuse.search(filter).map((x)=>x.item));
             setIsFiltered(true);//for sure true
@@ -112,35 +124,86 @@ export default function Home()
         setSelectedTypes(types);
     }
 
-    return <div><Box components="form" padding={1}>
-    <Stack spacing={1}>
-        <Stack direction="row" spacing={1}>
-            <Typography component="legend">Types:</Typography>
+    return <div><Sheet components="form" sx={{
+        // px: 0
+    }}>
+    <Box spacing={1}>
+        <Box
+            role="group"
+            aria-labelledby="tagFilter"
+            sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, py: 1}}
+        >
+        <Typography level="body2" >Types:</Typography>
             {meta.types.map(function(t){
                 let selected = selectedTypes.includes(t.toLowerCase());
-                let variant = selected ? "filled" : "outlined";
-                return <Chip key={t} label={t} variant={variant} onClick={()=>toggleType(t.toLowerCase())} />
-            })}</Stack>
-        <Stack direction="row" spacing={1}>
-            <Typography component="legend" >Type:</Typography>
+                return <Chip key={t}
+                             variant={selected ? "soft" : "plain"}
+                             color={selected ? 'primary' : 'neutral'}
+                             startDecorator={
+                                 selected && <CheckIcon sx={{ zIndex: 2, pointerEvents: 'none' }} />
+                             }>
+                    <Typography textTransform={"capitalize"}>
+                    <Checkbox
+                        variant="outlined"
+                        color={selected ? 'primary' : 'neutral'}
+                        disableIcon
+                        overlay
+                        label={t}
+                        checked={selected}
+                        onChange={()=>toggleType(t.toLowerCase())}
+                    />
+                </Typography>
+                </Chip>
+            })}
+        </Box>
+        <Box
+            role="group"
+            aria-labelledby="tagFilter"
+            sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}
+        >
+            <Typography level="body2">Type:</Typography>
             {meta.tags.map(function(t){
                 let selected = selectedTags.includes(t.toLowerCase());
-                let variant = selected ? "filled" : "outlined";
-                return <Chip key={t} label={t} variant={variant} onClick={()=>toggleTag(t.toLowerCase())} />
-            })}
-        </Stack>
-    </Stack>
-    <TextField id="standard-basic" label="  Search" variant="standard" type="search" fullWidth
-               value={filter}
-               onChange={e => setFilter(e.target.value)}
-               InputProps={{
-                   endAdornment: isFiltered ? <InputAdornment position="start" onClick={()=>setFilter("")} sx={{paddingRight:"12px"}}><h2>x</h2></InputAdornment> : null,
-               }}
-               sx={{
+                return <Chip key={t}
+                             variant={selected ? "soft" : "plain"}
+                             color={selected ? 'primary' : 'neutral'}
+                             startDecorator={
+                                 selected && <CheckIcon sx={{ zIndex: 1 }} />
+                             }>
+                    <Typography textTransform={"capitalize"}>
+                    <Checkbox
+                        variant="outlined"
+                        color={selected ? 'primary' : 'neutral'}
+                        disableIcon
+                        overlay
+                        label={t}
+                        checked={selected}
+                        onChange={()=>toggleTag(t.toLowerCase())}
 
-               }}
+                    />
+                    </Typography>
+
+                </Chip>
+            })}
+            </Box>
+        </Box>
+        <FormControl>
+            <FormLabel><Typography level="body2">Search</Typography></FormLabel>
+    <Input id="standard-basic"
+           type="search"
+           value={filter}
+           onChange={e => setFilter(e.target.value)}
+           placeholder="Filter assets"
+           endDecorator={
+               isFiltered ? <Close onClick={()=>setFilter("")} /> : null
+           }
+           sx={{
+                mx: 2,
+               my:1
+           }}
     />
-</Box>
+        </FormControl>
+</Sheet>
     <Divider />
     <AssetList viewList={filteredAssets} types={selectedTypes} tags={selectedTags} />
 </div>

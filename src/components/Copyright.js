@@ -1,3 +1,5 @@
+import {useHref, useLocation} from "react-router-dom";
+
 export default function Copyright(props)
 {
     if(props.license)
@@ -85,4 +87,31 @@ export default function Copyright(props)
 
     //else
     return <>No License Specified.</>;
+}
+export function AttributionText(item)
+{
+    let url = "http://assets.hdyar.com/"+useHref(useLocation());
+    return '"'+item.name+"' by "+item.author+". From Hunter's Asset Collection ("+url+"). Licensed under "+getLicensePrettyName(item.license);
+}
+export function getLicensePrettyName(license)
+{
+    if(license === "cc-by" || license === "by")
+    {
+        return "Creative Commons Attribution 4.0 International License";
+    }else if(license === "cc0" || license === "public" || license === "publicdomain" || license === "none")
+    {
+        return "Public Domain waiving of all rights."
+    }else if(license === "by-sa" || license === "cc-by-sa")
+    {
+        return "Creative Commons Attribution-ShareAlike 4.0 International License";
+    }else if(license === "by-nc" || license === "cc-by-nc")
+    {
+        return "Creative Commons Attribution-NonCommercial 4.0 International License";
+    }else if(license === "by-nc-sa" || license === "cc-by-nc-sa")
+    {
+       return "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License";
+    }else if(license === "by-nc-sa" || license === "cc-by-nc-sa")
+    {
+        return "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License";
+    }
 }
