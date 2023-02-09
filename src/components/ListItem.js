@@ -41,7 +41,7 @@ export default function ListItem(props)
                     </Typography>
 
                     <Typography level={"body2"} component={"span"} textAlign={"right"}>
-                        {item.tags.map((t)=>{return t+" ";})}
+                        {item.tags.join(", ")}
                     </Typography>
                     <Typography >
                         <Button variant={"outlined"}>
