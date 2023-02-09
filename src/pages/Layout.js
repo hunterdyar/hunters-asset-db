@@ -33,6 +33,7 @@ const Layout = () => {
             </Typography>
             <Outlet />
         </Sheet>
+        <Typography textAlign={"center"}>Copyright 2023 <a href="http://hdyar.com">Hunter Dyar</a>.</Typography>
     </CssVarsProvider>
     )
 };
