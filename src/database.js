@@ -51,8 +51,7 @@ async function queryContainer(id) {
 
 async function getAllAssets(){
     const querySpec = {
-        query: 'SELECT * FROM c',
-
+        query: 'SELECT * FROM c ORDER BY c._ts DESC'
             }
 
     const { resources: results } = await client
