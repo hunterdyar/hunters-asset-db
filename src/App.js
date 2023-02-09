@@ -6,6 +6,7 @@ import Layout from "./pages/Layout";
 import Single from "./pages/Single";
 import About from "./pages/About";
 import Test from "./pages/Home";
+import Tools from "./pages/Tools";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path="about" element={<About />} />
                     <Route path="404" element={<NoPage />} />
                     <Route path="test" element={<Test />} />
+                    <Route path="tools" element={<Tools />} />
                 </Route>
             </Routes>
         </HashRouter >
