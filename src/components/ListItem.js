@@ -29,7 +29,7 @@ export default function ListItem(props)
 {
     let item = props.item;
     return (
-        <Grid container sx={{py: 1}} spacing={1}>
+        <Grid container sx={{py: 1, pl: 1}} spacing={1}>
             <Grid item xs={12} >
                     <Typography level="h4">
                         {item.name}
