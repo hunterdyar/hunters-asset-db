@@ -1,5 +1,5 @@
 import {Link as RouterLink, Outlet} from "react-router-dom";
-import {CssBaseline, Link, CssVarsProvider, Sheet, Typography, Box} from "@mui/joy";
+import {CssBaseline, Link, CssVarsProvider, Sheet, Typography, Box, Stack} from "@mui/joy";
 import {CrateIcon} from "../components/Crate";
 const Layout = () => {
     return (
@@ -25,7 +25,11 @@ const Layout = () => {
                 </Typography>
             </Box>
             <Typography level="body1" textAlign={"center"} >
-                <Link component={RouterLink} variant={"outlined"} color={"neutral"} to={"/"}>Home</Link> <Link component={RouterLink} color={"neutral"} variant={"outlined"} to={"/about"}>About</Link>
+                <Stack direction={"row"} justifyContent={"center"} spacing={1}>
+                <Link component={RouterLink} variant={"outlined"} color={"neutral"} to={"/"}>Home</Link>
+                <Link component={RouterLink} color={"neutral"} variant={"outlined"} to={"/about"}>About</Link>
+                <Link component={RouterLink} color={"neutral"} variant={"outlined"} to={"/tools"}>Tools</Link>
+                </Stack>
             </Typography>
             <Outlet />
         </Sheet>
