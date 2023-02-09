@@ -111,7 +111,7 @@ export default function Tools()
                 </ul>
                 </Typography>
                 <Typography level={"h3"} >
-                    Sample code and Example Projects
+                    Sample Code and Example Projects
                 </Typography>
                 <Typography level="body1" sx={{pb: 1}}>
                 <ul>
