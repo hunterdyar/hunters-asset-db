@@ -161,7 +161,7 @@ export default function Home()
             aria-labelledby="tagFilter"
             sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}
         >
-            <Typography level="body2">Type:</Typography>
+            <Typography level="body2">Tags:</Typography>
             {meta.tags.map(function(t){
                 let selected = selectedTags.includes(t.toLowerCase());
                 return <Chip key={t}
